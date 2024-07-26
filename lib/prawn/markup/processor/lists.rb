@@ -23,7 +23,7 @@ module Prawn
         else
           add_current_text
         end
-        @list_stack.push(Elements::List.new(ordered))
+        @list_stack.push(Elements::List.new(ordered, current_attrs))
       end
 
       def end_list
