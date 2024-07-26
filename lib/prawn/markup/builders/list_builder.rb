@@ -57,11 +57,13 @@ module Prawn
         end
 
         def convert_list
+          offset = list.attrs.fetch('start', 1).to_i
+
           list.items.map.with_index do |item, i|
             if item.single?
-              [bullet(i + 1), normalize_list_item_node(item.nodes.first)]
+              [bullet(i + offset), normalize_list_item_node(item.nodes.first)]
             else
-              [bullet(i + 1), list_item_table(item)]
+              [bullet(i + offset), list_item_table(item)]
             end
           end
         end
